@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 //Austria, Sheban James, V
 // tiny fix to trigger new commit
-
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -27,4 +24,3 @@ export default function ProductList(){
     </div>
   );
 }
->>>>>>> origin/austria-product-pages-fix
