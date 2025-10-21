@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-=======
 //Austria, Sheban James, V
 // tiny fix to trigger new commit
-
 
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
@@ -28,4 +25,3 @@ export default function ProductDetails(){
     </div>
   );
 }
->>>>>>> origin/austria-product-pages-fix
