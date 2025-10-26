@@ -6,6 +6,12 @@ body {
   padding: 0;
 }
 
+/* 🔴 Red top bar matching the wireframe */
+.top-bar {
+  height: 6px;
+  background-color: #1F2937;
+}
+
 button {
   background: #EF4444;
   color: white;
@@ -25,7 +31,9 @@ button:hover {
   padding: 16px;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: #1F2937;
 }
 

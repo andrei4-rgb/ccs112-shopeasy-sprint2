@@ -11,6 +11,9 @@ import "./index.css";
 export default function App() {
   return (
     <Router>
+      {/* Red top accent bar */}
+      <div className="top-bar"></div>
+
       <Navbar />
       <div className="page-container">
         <Routes>
