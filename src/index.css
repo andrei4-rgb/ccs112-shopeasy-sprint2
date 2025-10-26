@@ -1,19 +1,5 @@
-/* Artillero, Lexin Andrei G */
+/* Artillero, Lexin Andrei G. */
 
-body {
-  font-family: "Segoe UI", Roboto, sans-serif;
-  background: #F9FAFB;
-  color: #1F2937;
-  margin: 0;
-  padding: 0;
-}
-
-/* I remove the old top-bar since navbar already has the color */
-.top-bar {
-  display: none;
-}
-
-/* Navbar styling */
 nav {
   background-color: #1F2937;
   display: flex;
@@ -33,36 +19,13 @@ nav a:hover {
   color: #EF4444;
 }
 
-button {
-  background: #EF4444;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: background 0.2s;
+.logo {
+  color: #F9FAFB;
+  font-weight: 600;
+  font-size: 1.25rem;
 }
 
-button:hover {
-  background: #dc2626;
-}
-
-.page-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 16px;
-  text-align: center;
-}
-
-h1, h2, h3 {
-  color: #1F2937;
-}
-
-a {
-  color: #1F2937;
-  text-decoration: none;
-}
-
-a:hover {
-  text-decoration: underline;
+.nav-links {
+  display: flex;
+  gap: 24px;
 }
