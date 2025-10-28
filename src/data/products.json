@@ -1,4 +1,44 @@
 [
-  {"id":1,"name":"Basic Tee","price":199,"description":"Cotton t-shirt"},
-  {"id":2,"name":"Sneaker X","price":2499,"description":"Lightweight sneakers"}
+  {
+    "id": 1,
+    "name": "Basic Tee",
+    "price": 199,
+    "description": "Soft cotton t-shirt perfect for everyday wear.",
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 2,
+    "name": "Sneaker X",
+    "price": 2499,
+    "description": "Lightweight sneakers built for comfort and style.",
+    "image": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 3,
+    "name": "Denim Jacket",
+    "price": 1499,
+    "description": "Classic denim jacket with modern fit for casual outings.",
+    "image": "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 4,
+    "name": "Smart Watch",
+    "price": 3499,
+    "description": "Track fitness, calls, and notifications with style.",
+    "image": "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 5,
+    "name": "Backpack Pro",
+    "price": 899,
+    "description": "Durable backpack with multiple compartments and laptop sleeve.",
+    "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 6,
+    "name": "Wireless Headphones",
+    "price": 1599,
+    "description": "Noise-cancelling wireless headphones for premium sound.",
+    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80"
+  }
 ]
