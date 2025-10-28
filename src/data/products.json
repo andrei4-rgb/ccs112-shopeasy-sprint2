@@ -18,27 +18,27 @@
     "name": "Denim Jacket",
     "price": 1499,
     "description": "Classic denim jacket with modern fit for casual outings.",
-    "image": "https://images.unsplash.com/photo-1536895058696-a69b1c7ba34c?auto=format&fit=crop&w=600&q=80"
+    "image": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/456090/sub/goods_456090_sub14_3x4.jpg?width=423"
   },
   {
     "id": 4,
     "name": "Smart Watch",
     "price": 3499,
     "description": "Track fitness, calls, and notifications with style.",
-    "image": "https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=600&q=80"
+    "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRBUWtwxsL4ogJF9FNGeRyAU_oNjRZwkOBMGeAnFYcxBYWla48Gd9SgokB-ZmdL7k0k_WcFOp5v8NFpcKqaLzNvzYA26rpELK78aehK6TWX6im_ZZaxobHkYQ"
   },
   {
     "id": 5,
     "name": "Backpack Pro",
     "price": 899,
     "description": "Durable backpack with multiple compartments and laptop sleeve.",
-    "image": "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80"
+    "image": "https://www.urbantravellerco.com/cdn/shop/files/alpaka-backpacks-army-green-alpaka-elements-backpack-pro-axoflux-600d-57972591460661_940x.jpg?v=1753861636"
   },
   {
     "id": 6,
     "name": "Wireless Headphones",
     "price": 1599,
     "description": "Noise-cancelling wireless headphones for premium sound.",
-    "image": "https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80"
+    "image": "https://powermaccenter.com/cdn/shop/files/SNYI100BLU012000x2000.jpg?v=1692058747&width=713"
   }
 ]
