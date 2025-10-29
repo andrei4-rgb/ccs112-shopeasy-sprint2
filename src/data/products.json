@@ -40,5 +40,19 @@
     "price": 1599,
     "description": "Noise-cancelling wireless headphones for premium sound.",
     "image": "https://powermaccenter.com/cdn/shop/files/SNYI100BLU012000x2000.jpg?v=1692058747&width=713"
+  },
+  {
+    "id": 7,
+    "name": "Leather Wallet",
+    "price": 499,
+    "description": "Premium genuine leather wallet with multiple card slots and coin pocket.",
+    "image": "https://images.unsplash.com/photo-1593032465170-89cce5f3d515?auto=format&fit=crop&w=600&q=80"
+  },
+  {
+    "id": 8,
+    "name": "Travel Mug",
+    "price": 299,
+    "description": "Stainless steel insulated travel mug keeps beverages hot or cold.",
+    "image": "https://images.unsplash.com/photo-1590080875562-9fdb843e1a61?auto=format&fit=crop&w=600&q=80"
   }
 ]
