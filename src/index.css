@@ -105,20 +105,28 @@ nav a:hover {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 420px;
+  width: 500px;
   max-width: 90%;
-  transform: translate(-50%, -50%) scale(1.1);
+  height: auto;
+  transform: translate(-50%, -50%) scale(1);
   z-index: 200;
-  background: rgba(255, 255, 255, 0.95);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+  padding: 24px;
   transition: all 0.4s ease;
+  border-radius: 16px;
 }
 
+
 .product-card.expanded img {
-  transform: scale(1.2); /* bigger image when expanded */
-  max-height: 300px;
+  width: 100%;
+  max-height: 320px;
   object-fit: contain;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  transform: none;
 }
+
 
 /* dark overlay when expanded */
 .overlay {
