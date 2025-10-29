@@ -4,55 +4,63 @@
     "name": "Basic Tee",
     "price": 199,
     "description": "Soft cotton t-shirt perfect for everyday wear.",
-    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80",
+    "category": "Apparel"
   },
   {
     "id": 2,
     "name": "Sneaker X",
     "price": 2499,
     "description": "Lightweight sneakers built for comfort and style.",
-    "image": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80"
+    "image": "https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=600&q=80",
+    "category": "Apparel"
   },
   {
     "id": 3,
     "name": "Denim Jacket",
     "price": 1499,
     "description": "Classic denim jacket with modern fit for casual outings.",
-    "image": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/456090/sub/goods_456090_sub14_3x4.jpg?width=423"
+    "image": "https://image.uniqlo.com/UQ/ST3/AsianCommon/imagesgoods/456090/sub/goods_456090_sub14_3x4.jpg?width=423",
+    "category": "Apparel"
   },
   {
     "id": 4,
     "name": "Smart Watch",
     "price": 3499,
     "description": "Track fitness, calls, and notifications with style.",
-    "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRBUWtwxsL4ogJF9FNGeRyAU_oNjRZwkOBMGeAnFYcxBYWla48Gd9SgokB-ZmdL7k0k_WcFOp5v8NFpcKqaLzNvzYA26rpELK78aehK6TWX6im_ZZaxobHkYQ"
+    "image": "https://encrypted-tbn2.gstatic.com/shopping?q=tbn:ANd9GcRBUWtwxsL4ogJF9FNGeRyAU_oNjRZwkOBMGeAnFYcxBYWla48Gd9SgokB-ZmdL7k0k_WcFOp5v8NFpcKqaLzNvzYA26rpELK78aehK6TWX6im_ZZaxobHkYQ",
+    "category": "Accessories"
   },
   {
     "id": 5,
     "name": "Backpack Pro",
     "price": 899,
     "description": "Durable backpack with multiple compartments and laptop sleeve.",
-    "image": "https://www.urbantravellerco.com/cdn/shop/files/alpaka-backpacks-army-green-alpaka-elements-backpack-pro-axoflux-600d-57972591460661_940x.jpg?v=1753861636"
+    "image": "https://www.urbantravellerco.com/cdn/shop/files/alpaka-backpacks-army-green-alpaka-elements-backpack-pro-axoflux-600d-57972591460661_940x.jpg?v=1753861636",
+    "category": "Utilities"
   },
   {
     "id": 6,
     "name": "Wireless Headphones",
     "price": 1599,
     "description": "Noise-cancelling wireless headphones for premium sound.",
-    "image": "https://powermaccenter.com/cdn/shop/files/SNYI100BLU012000x2000.jpg?v=1692058747&width=713"
+    "image": "https://powermaccenter.com/cdn/shop/files/SNYI100BLU012000x2000.jpg?v=1692058747&width=713",
+    "category": "Accessories"
   },
   {
     "id": 7,
     "name": "Leather Wallet",
     "price": 499,
     "description": "Premium genuine leather wallet with multiple card slots and coin pocket.",
-    "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRZeLo367VuSjj6mVqm0ddWjeKuzScSxVPu0jhI8Alo2QRzN-4iOG3D-QJooxRoIzi6dJakoPw5HSZhtGvKw3D_wKtQo87mrSC-iQOMcPNeOgvUtEJ9N3XPriu5"
+    "image": "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRZeLo367VuSjj6mVqm0ddWjeKuzScSxVPu0jhI8Alo2QRzN-4iOG3D-QJooxRoIzi6dJakoPw5HSZhtGvKw3D_wKtQo87mrSC-iQOMcPNeOgvUtEJ9N3XPriu5",
+    "category": "Accessories"
   },
   {
     "id": 8,
     "name": "Travel Mug",
     "price": 299,
     "description": "Stainless steel insulated travel mug keeps beverages hot or cold.",
-    "image": "https://www.nespresso.ph/media/catalog/product/t/r/travelmugtouch.png"
+    "image": "https://www.nespresso.ph/media/catalog/product/t/r/travelmugtouch.png",
+    "category": "Utilities"
   }
 ]

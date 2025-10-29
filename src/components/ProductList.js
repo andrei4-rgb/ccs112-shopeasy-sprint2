@@ -1,30 +1,69 @@
-// Austria, Sheban James, V
+//Austria, Sheban James
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import products from "../data/products.json";
-import "../index.css"; 
+import "../index.css";
+
+const categories = ["All", "Apparel", "Accessories", "Utilities"];
 
 export default function ProductList() {
   const [expandedId, setExpandedId] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  // Handle closing with Escape key
   useEffect(() => {
     const handleEsc = (e) => {
-      if (e.key === "Escape") setExpandedId(null);
+      if (e.key === "Escape") {
+        setExpandedId(null);
+        setDropdownOpen(false);
+      }
     };
     window.addEventListener("keydown", handleEsc);
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  const filteredProducts =
+    selectedCategory === "All"
+      ? products
+      : products.filter((p) => p.category === selectedCategory);
+
   return (
     <div className="page-container">
-      <h2 style={{ color: "#1F2937", textAlign: "center", marginBottom: 24 }}>
+      <h2 style={{ color: "#1F2937", textAlign: "center", marginBottom: 12 }}>
         Our Products
       </h2>
 
+      <div className="category-selector">
+        <button
+          className="category-button"
+          onClick={() => setDropdownOpen(!dropdownOpen)}
+        >
+          Category: {selectedCategory}
+        </button>
+
+        {dropdownOpen && (
+          <div className="category-dropdown">
+            {categories.map((cat) => (
+              <div
+                key={cat}
+                className={`category-option ${
+                  selectedCategory === cat ? "active" : ""
+                }`}
+                onClick={() => {
+                  setSelectedCategory(cat);
+                  setDropdownOpen(false);
+                }}
+              >
+                {cat}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
       <div className="product-grid">
-        {products.map((p) => (
+        {filteredProducts.map((p) => (
           <div
             key={p.id}
             className={`product-card ${expandedId === p.id ? "expanded" : ""}`}
@@ -43,16 +82,9 @@ export default function ProductList() {
         ))}
       </div>
 
-      {/* Dim background when card is expanded */}
       {expandedId && (
-        <div
-          className="overlay"
-          onClick={() => setExpandedId(null)}
-        ></div>
+        <div className="overlay" onClick={() => setExpandedId(null)}></div>
       )}
     </div>
   );
 }
-
-// Artillero - nag add ako mga bagong product
-// Austria - nag update po ako for effects
