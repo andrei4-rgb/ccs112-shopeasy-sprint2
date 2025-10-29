@@ -62,5 +62,85 @@
     "description": "Stainless steel insulated travel mug keeps beverages hot or cold.",
     "image": "https://www.nespresso.ph/media/catalog/product/t/r/travelmugtouch.png",
     "category": "Utilities"
+  },
+  {
+    "id": 9,
+    "name": "Cargo Brown Shorts",
+    "price": 799,
+    "description": "Casual brown cargo shorts with multiple pockets and comfortable fit.",
+    "image": "https://cdn-images.farfetch-contents.com/23/36/62/53/23366253_53752010_600.jpg",
+    "category": "Apparel"
+  },
+  {
+    "id": 10,
+    "name": "Blue Polo Shirt",
+    "price": 699,
+    "description": "Classic blue polo shirt crafted from breathable cotton fabric.",
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTU3JrQO61BlYLzJGvjZWZ-ngvZuA_Uj9sovA&s",
+    "category": "Apparel"
+  },
+  {
+    "id": 11,
+    "name": "Sport Sneakers",
+    "price": 1799,
+    "description": "Performance sneakers designed for maximum comfort and durability.",
+    "image": "https://dynamic.zacdn.com/sUn9BOakqjqlpUvUufLDexYwgGY=/filters:quality(70):format(webp)/https://static-ph.zacdn.com/p/world-balance-0314-7195423-1.jpg",
+    "category": "Apparel"
+  },
+  {
+    "id": 12,
+    "name": "Smart Watch Black",
+    "price": 3599,
+    "description": "Sleek black smartwatch with fitness tracking and call notifications.",
+    "image": "https://cdn.mos.cms.futurecdn.net/raw3fhNA9oN7h4FCk6RvmP.jpg",
+    "category": "Accessories"
+  },
+  {
+    "id": 13,
+    "name": "Sapphire Diamond Ring",
+    "price": 12999,
+    "description": "Elegant royal blue sapphire and diamond ring handcrafted in London.",
+    "image": "https://www.hirshlondon.com/media/catalog/product/cache/c24ad24c76258badb18cbdcd2c71fdec/t/r/trio-royal-blue-sapphire-and-diamond-ring-hirsh-london-r2631.jpg",
+    "category": "Accessories"
+  },
+  {
+    "id": 14,
+    "name": "Brass Compass Keychain",
+    "price": 299,
+    "description": "Compact brass keychain with a built-in magnetic direction compass.",
+    "image": "https://rukminim2.flixcart.com/image/480/640/xif0q/key-chain/i/w/k/brass-magnetic-direction-compass-shoptreed-1-original-imah8hgpxzafx7j6.jpeg?q=20",
+    "category": "Accessories"
+  },
+  {
+    "id": 15,
+    "name": "Water Filter Bottle",
+    "price": 649,
+    "description": "Portable water bottle with integrated filter for safe hydration on the go.",
+    "image": "https://www.pbtech.com/pacific/imgprod/W/A/WATAQF0000576__1.jpg",
+    "category": "Utilities"
+  },
+  {
+    "id": 16,
+    "name": "Gym Duffel Bag",
+    "price": 1099,
+    "description": "Spacious duffel bag perfect for gym sessions or short trips.",
+    "image": "https://www.urbanathletics.com.ph/cdn/shop/files/436037-A.jpg?v=1711433964",
+    "category": "Utilities"
+  },
+  {
+    "id": 17,
+    "name": "Travel Hiking Bag",
+    "price": 1399,
+    "description": "Durable travel and hiking backpack designed for long outdoor adventures.",
+    "image": "https://my-test-11.slatic.net/p/d1363a525383bebbd9adfa46f44d48d0.jpg",
+    "category": "Utilities"
+  },
+  {
+    "id": 18,
+    "name": "Swiss Army Knife",
+    "price": 999,
+    "description": "Compact multi-tool Swiss Army knife with essential functions.",
+    "image": "https://www.vkf-renzel.com/out/pictures/generated/product/1/650_650_75/r4004904-01/victorinox-swiss-army-knife-classic-40.0490.4-1.jpg",
+    "category": "Utilities"
   }
 ]
