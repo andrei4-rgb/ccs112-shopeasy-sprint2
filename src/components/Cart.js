@@ -20,7 +20,31 @@ export default function Cart(){
         ))
       }
       <h3>Total: ₱{total}</h3>
-      <button onClick={()=>nav("/checkout")} style={{background:"#EF4444", color:"#fff", border:"none", padding:"12px 24px", borderRadius:8}}>Checkout</button>
+      <button
+  onClick={() => {
+    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+    const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+
+    const newOrder = {
+      id: Date.now(),
+      items: cartItems,
+      total: cartItems.reduce((sum, item) => sum + (item.price || 0), 0)
+    };
+
+    localStorage.setItem("orders", JSON.stringify([...orders, newOrder]));
+    localStorage.removeItem("cart"); // clear cart after checkout
+    nav("/checkout");
+  }}
+  style={{
+    background: "#EF4444",
+    color: "#fff",
+    border: "none",
+    padding: "12px 24px",
+    borderRadius: 8
+  }}
+>
+  Checkout
+</button>
     </div>
   );
 }

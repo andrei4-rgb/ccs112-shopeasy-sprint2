@@ -2,44 +2,32 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+import UserLayout from "./components/UserLayout";
 import HomePage from "./components/HomePage";
 import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
-import AdminPanel from "./components/AdminPanel"; // new add 
-import OrdersView from "./components/OrdersView"; // new add
+import AdminPanel from "./components/AdminPanel";
+import OrdersView from "./components/OrdersView";
 import "./index.css";
 
 export default function App() {
   return (
     <Router>
-      {/* Red top accent bar */}
       <div className="top-bar"></div>
 
       <Routes>
-        {/* User-facing routes with Navbar */}
-        <Route
-          path="/*"
-          element={
-            <>
-              <Navbar />
-              <div className="page-container">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/products" element={<ProductList />} />
-                  <Route path="/products/:id" element={<ProductDetails />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/checkout" element={<Checkout />} />
-                  
-                </Routes>
-              </div>
-            </>
-          }
-        />
+        {/* User-facing layout */}
+        <Route element={<UserLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
+        </Route>
 
-        {/* Admin route without Navbar */}
+        {/* Admin routes without Navbar */}
         <Route path="/admin" element={<AdminPanel />} />
         <Route path="/admin/orders" element={<OrdersView />} />
       </Routes>
