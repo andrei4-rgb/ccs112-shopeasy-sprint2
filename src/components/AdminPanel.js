@@ -46,15 +46,23 @@ export default function AdminPanel() {
 
   return (
     <div className="admin-container">
-      {/* Header with Back button */}
+      {/* Header with navigation buttons */}
       <div className="admin-header">
         <h2 className="admin-title">Admin Panel</h2>
-        <button
-          className="back-button"
-          onClick={() => (window.location.href = "/")}
-        >
-          ⬅ Back to User Mode
-        </button>
+        <div className="admin-actions">
+          <button
+            className="back-button"
+            onClick={() => (window.location.href = "/")}
+          >
+            ⬅ Back to User Mode
+          </button>
+          <button
+            className="view-orders-button"
+            onClick={() => (window.location.href = "/admin/orders")}
+          >
+            👁 View Orders
+          </button>
+        </div>
       </div>
 
       {/* Add product form */}

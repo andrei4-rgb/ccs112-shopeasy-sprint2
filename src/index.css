@@ -305,6 +305,24 @@ button:hover {
 }
 
 /* admin dark theme */
+
+.admin-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.view-orders-button {
+  background: #2563EB;
+  color: #F9FAFB;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.view-orders-button:hover {
+  background: #1D4ED8;
+}
+
 .admin-container {
   background: #111827; /* deep slate */
   color: #F9FAFB;

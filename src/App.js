@@ -9,6 +9,7 @@ import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import AdminPanel from "./components/AdminPanel"; // new add 
+import OrdersView from "./components/OrdersView"; // new add
 import "./index.css";
 
 export default function App() {
@@ -31,6 +32,7 @@ export default function App() {
                   <Route path="/products/:id" element={<ProductDetails />} />
                   <Route path="/cart" element={<Cart />} />
                   <Route path="/checkout" element={<Checkout />} />
+                  
                 </Routes>
               </div>
             </>
@@ -39,6 +41,7 @@ export default function App() {
 
         {/* Admin route without Navbar */}
         <Route path="/admin" element={<AdminPanel />} />
+        <Route path="/admin/orders" element={<OrdersView />} />
       </Routes>
     </Router>
   );
