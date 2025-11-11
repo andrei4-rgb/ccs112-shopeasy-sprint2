@@ -8,7 +8,7 @@ import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
-import AdminPanel from "./components/AdminPanel"; // add 
+import AdminPanel from "./components/AdminPanel"; // new add 
 import "./index.css";
 
 export default function App() {
@@ -17,17 +17,29 @@ export default function App() {
       {/* Red top accent bar */}
       <div className="top-bar"></div>
 
-      <Navbar />
-      <div className="page-container">
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/admin" element={<AdminPanel />} /> {/* added */}
-        </Routes>
-      </div>
+      <Routes>
+        {/* User-facing routes with Navbar */}
+        <Route
+          path="/*"
+          element={
+            <>
+              <Navbar />
+              <div className="page-container">
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/products" element={<ProductList />} />
+                  <Route path="/products/:id" element={<ProductDetails />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/checkout" element={<Checkout />} />
+                </Routes>
+              </div>
+            </>
+          }
+        />
+
+        {/* Admin route without Navbar */}
+        <Route path="/admin" element={<AdminPanel />} />
+      </Routes>
     </Router>
   );
 }
