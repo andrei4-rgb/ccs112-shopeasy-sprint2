@@ -8,6 +8,7 @@ import ProductList from "./components/ProductList";
 import ProductDetails from "./components/ProductDetails";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
+import AdminPanel from "./components/AdminPanel"; // add 
 import "./index.css";
 
 export default function App() {
@@ -24,6 +25,7 @@ export default function App() {
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/admin" element={<AdminPanel />} /> {/* added */}
         </Routes>
       </div>
     </Router>

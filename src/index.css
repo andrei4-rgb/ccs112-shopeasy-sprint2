@@ -264,3 +264,87 @@ button:hover {
   font-weight: bold;
   color: #EF4444;
 }
+/* mode switch dropdown */
+.mode-switch {
+  position: relative;
+}
+.mode-switch button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #F9FAFB;
+}
+.mode-dropdown {
+  position: absolute;
+  right: 0;
+  top: 36px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 8px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+  padding: 8px;
+  z-index: 20;
+}
+.mode-dropdown div {
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+.mode-dropdown div:hover {
+  background: #f3f4f6;
+}
+
+/* admin dark theme */
+.admin-container {
+  background: #111827; /* deep slate */
+  color: #F9FAFB;
+  min-height: 100vh;
+  padding: 32px;
+  border-radius: 12px;
+}
+.admin-title {
+  font-size: 1.8rem;
+  margin-bottom: 24px;
+  color: #FBBF24; /* warm accent yellow */
+}
+.admin-form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.admin-form input,
+.admin-form select {
+  background: #1F2937;
+  color: #F9FAFB;
+  border: 1px solid #374151;
+  padding: 8px;
+  border-radius: 6px;
+  flex: 1;
+}
+.admin-form input::placeholder {
+  color: #9CA3AF;
+}
+.admin-form button {
+  background: #EF4444;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.admin-form button:hover {
+  background: #dc2626;
+}
+.admin-grid {
+  gap: 24px;
+}
+.admin-card {
+  background: #1F2937;
+  color: #F9FAFB;
+  border: 1px solid #374151;
+}
+.admin-card h3,
+.admin-card p {
+  color: #F9FAFB;
+}
