@@ -1,11 +1,16 @@
-//Artillero, Lexin Andrei G.
+// Artillero, Lexin Andrei G.
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import productsData from "../data/products.json";
 import "../index.css";
 
 export default function AdminPanel() {
-  const [products, setProducts] = useState(productsData);
+  // Load products from localStorage if available
+  const [products, setProducts] = useState(() => {
+    const saved = localStorage.getItem("products");
+    return saved ? JSON.parse(saved) : productsData;
+  });
+
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
@@ -13,6 +18,11 @@ export default function AdminPanel() {
     image: "",
     category: ""
   });
+
+  // Persist products whenever they change
+  useEffect(() => {
+    localStorage.setItem("products", JSON.stringify(products));
+  }, [products]);
 
   const handleAdd = () => {
     const id = products.length + 1;
@@ -36,7 +46,16 @@ export default function AdminPanel() {
 
   return (
     <div className="admin-container">
-      <h2 className="admin-title">Admin Panel</h2>
+      {/* Header with Back button */}
+      <div className="admin-header">
+        <h2 className="admin-title">Admin Panel</h2>
+        <button
+          className="back-button"
+          onClick={() => (window.location.href = "/")}
+        >
+          ⬅ Back to User Mode
+        </button>
+      </div>
 
       {/* Add product form */}
       <div className="admin-form">

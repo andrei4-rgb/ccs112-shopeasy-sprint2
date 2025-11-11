@@ -21,7 +21,7 @@ export default function Navbar() {
           <button onClick={() => setDropdownOpen(!dropdownOpen)}>⋮</button>
           {dropdownOpen && (
             <div className="mode-dropdown">
-              <div onClick={() => { navigate("/products"); setDropdownOpen(false); }}>
+              <div onClick={() => { navigate("/"); setDropdownOpen(false); }}>
                 User Mode
               </div>
               <div onClick={() => { navigate("/admin"); setDropdownOpen(false); }}>

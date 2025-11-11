@@ -56,6 +56,7 @@ nav a:hover {
   margin: 40px auto;
   padding: 16px;
   text-align: center;
+  width: 90%;
 }
 
 /* product grid layout */
@@ -272,6 +273,8 @@ button:hover {
 /* mode switch dropdown */
 .mode-switch {
   position: relative;
+  align-items: center;
+
 }
 .mode-switch button {
   background: none;
@@ -279,6 +282,8 @@ button:hover {
   font-size: 1.5rem;
   cursor: pointer;
   color: #F9FAFB;
+  padding: 0;
+  line-height: 1;;
 }
 .mode-dropdown {
   position: absolute;
@@ -307,11 +312,33 @@ button:hover {
   padding: 32px;
   border-radius: 12px;
 }
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 .admin-title {
   font-size: 1.8rem;
   margin-bottom: 24px;
   color: #FBBF24; /* warm accent yellow */
 }
+.back-button {
+  background: #374151;
+  color: #F9FAFB;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.back-button:hover { background: #4B5563; }
+.admin-form {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
 .admin-form {
   display: flex;
   gap: 12px;
