@@ -9,33 +9,34 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index() {
-        return Order::with('product')->get();
+        // Return all orders with their related product and customer
+        return Order::with(['product', 'customer'])->get();
     }
 
     public function show(Order $order) {
-        return $order->load('product');
+        // Return a single order with its related product and customer
+        return $order->load(['product', 'customer']);
     }
 
     public function store(Request $req) {
         $data = $req->validate([
+            'customer_id' => 'required|exists:customers,id',
             'product_id' => 'required|exists:products,id',
             'quantity' => 'required|integer|min:1',
-            'customer_name' => 'required|string',
-            'customer_email' => 'required|email',
+            'status' => 'required|string',
         ]);
 
         $product = Product::findOrFail($data['product_id']);
         $data['total_price'] = $product->price * $data['quantity'];
 
         $order = Order::create($data);
-        return $order->load('product');
+        return $order->load(['product', 'customer']);
     }
 
     public function update(Request $req, Order $order) {
         $data = $req->validate([
             'quantity' => 'sometimes|integer|min:1',
-            'customer_name' => 'sometimes|string',
-            'customer_email' => 'sometimes|email',
+            'status' => 'sometimes|string',
         ]);
 
         if (isset($data['quantity'])) {
@@ -43,7 +44,7 @@ class OrderController extends Controller
         }
 
         $order->update($data);
-        return $order->load('product');
+        return $order->load(['product', 'customer']);
     }
 
     public function destroy(Order $order) {
