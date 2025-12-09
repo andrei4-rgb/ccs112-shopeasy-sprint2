@@ -1,8 +1,9 @@
-//Austria, Sheban James
+// Austria, Sheban James
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import products from "../data/products.json";
+// import products from "../data/products.json"; // remove local data import
+import api from "../api/axios";
 import "../index.css";
 
 const categories = ["All", "Apparel", "Accessories", "Utilities"];
@@ -11,6 +12,8 @@ export default function ProductList() {
   const [expandedId, setExpandedId] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [products, setProducts] = useState([]);
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const handleEsc = (e) => {
@@ -23,10 +26,23 @@ export default function ProductList() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  useEffect(() => {
+    // Load from API
+    api.get("/products")
+      .then((res) => setProducts(res.data))
+      .catch((err) =>
+        setError(err.response?.data?.message || "Failed to load products")
+      );
+  }, []);
+
   const filteredProducts =
     selectedCategory === "All"
       ? products
-      : products.filter((p) => p.category === selectedCategory);
+      : products.filter((p) => {
+          // Adjust if backend returns category as object
+          // e.g., p.category?.name === selectedCategory
+          return p.category === selectedCategory || p.category_name === selectedCategory;
+        });
 
   return (
     <div className="page-container">
@@ -62,6 +78,8 @@ export default function ProductList() {
         )}
       </div>
 
+      {error && <p style={{ color: "red" }}>{error}</p>}
+
       <div className="product-grid">
         {filteredProducts.map((p) => (
           <div
@@ -72,7 +90,8 @@ export default function ProductList() {
               setExpandedId(expandedId === p.id ? null : p.id);
             }}
           >
-            <img src={p.image} alt={p.name} />
+            {/* If backend doesn’t have image field, guard it */}
+            {p.image && <img src={p.image} alt={p.name} />}
             <h3>{p.name}</h3>
             <p>₱{p.price}</p>
             <Link to={`/products/${p.id}`}>
