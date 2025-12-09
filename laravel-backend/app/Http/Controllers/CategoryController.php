@@ -12,36 +12,43 @@ class CategoryController extends Controller
         return response()->json(Category::orderBy('name')->get(), 200);
     }
 
+    public function show($id)
+    {
+        $category = Category::findOrFail($id);
+        return response()->json($category, 200);
+    }
+
     public function store(Request $request)
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:100|unique:categories,name',
-            'description' => 'nullable|string|max:1000',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name',
+            'description' => 'nullable|string',
         ]);
 
-        $category = Category::create($data);
+        $category = Category::create($validated);
+
         return response()->json($category, 201);
     }
 
-    public function show(Category $category)
+    public function update(Request $request, $id)
     {
-        return response()->json($category, 200);
-    }
+        $category = Category::findOrFail($id);
 
-    public function update(Request $request, Category $category)
-    {
-        $data = $request->validate([
-            'name' => 'required|string|max:100|unique:categories,name,' . $category->id,
-            'description' => 'nullable|string|max:1000',
+        $validated = $request->validate([
+            'name' => 'required|string|max:255|unique:categories,name,' . $id,
+            'description' => 'nullable|string',
         ]);
 
-        $category->update($data);
+        $category->update($validated);
+
         return response()->json($category, 200);
     }
 
-    public function destroy(Category $category)
+    public function destroy($id)
     {
+        $category = Category::findOrFail($id);
         $category->delete();
-        return response()->json(null, 204);
+
+        return response()->json(['message' => 'Category deleted'], 200);
     }
 }
