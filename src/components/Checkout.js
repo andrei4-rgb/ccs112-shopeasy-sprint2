@@ -2,38 +2,63 @@
 
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../api/axios";
 
 export default function Checkout() {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [payment, setPayment] = useState("Cash on Delivery");
+  const [error, setError] = useState("");
   const nav = useNavigate();
 
-  const submit = (e) => {
+  const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
+
+  const submit = async (e) => {
     e.preventDefault();
+    setError("");
 
-    const cartItems = JSON.parse(localStorage.getItem("cart") || "[]");
-    const orders = JSON.parse(localStorage.getItem("orders") || "[]");
+    if (!cartItems.length) {
+      setError("Your cart is empty.");
+      return;
+    }
 
-    const newOrder = {
-      id: Date.now(),
-      customer: { name, address, payment },
-      items: cartItems,
-      total: cartItems.reduce((sum, item) => sum + (item.price || 0), 0)
-    };
+    try {
+      console.log("🛒 Cart items:", cartItems);
 
-    localStorage.setItem("orders", JSON.stringify([...orders, newOrder]));
-    localStorage.removeItem("cart");
+      const payload = {
+        name,
+        address,
+        payment,
+        items: cartItems.map((item) => ({
+          product_id: item.id,
+          quantity: item.quantity || 1,
+          status: "pending",
+        })),
+      };
 
-    alert("Order placed!");
+      console.log("📦 Sending full order payload:", payload);
 
-    // Clear form inputs
-    setName("");
-    setAddress("");
-    setPayment("Cash on Delivery");
+      const res = await api.post("/api/orders", payload);
 
-    // Optional: redirect to cart or thank you page
-    nav("/cart");
+      console.log("✅ Order response:", res.data);
+
+      // ✅ Clear cart only after successful order
+      localStorage.removeItem("cart");
+      alert("Order placed!");
+
+      setName("");
+      setAddress("");
+      setPayment("Cash on Delivery");
+
+      nav("/cart");
+    } catch (err) {
+      console.error("❌ Order error:", err.response?.data || err.message);
+      setError(
+        err.response?.data?.message ||
+        err.response?.data?.errors?.items?.[0] ||
+        "Failed to place order"
+      );
+    }
   };
 
   return (
@@ -98,6 +123,8 @@ export default function Checkout() {
       >
         Place Order
       </button>
+
+      {error && <p style={{ color: "red", marginTop: 12 }}>{error}</p>}
     </form>
   );
 }

@@ -2,28 +2,27 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
-use App\Models\Customer;
 
 class Order extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'customer_id',
         'product_id',
         'quantity',
         'total_price',
-        'status'
+        'status',
+        'name',
+        'address',
+        'payment',
     ];
 
     public function product() {
         return $this->belongsTo(Product::class);
     }
 
-    public function customer() {
-        return $this->belongsTo(Customer::class);
+    // ✅ Rename to "user" since customer_id now points to users.id
+    public function user() {
+        return $this->belongsTo(User::class, 'customer_id');
     }
 }

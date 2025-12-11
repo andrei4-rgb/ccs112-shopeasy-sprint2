@@ -9,34 +9,58 @@ use Illuminate\Http\Request;
 class OrderController extends Controller
 {
     public function index() {
-        // Return all orders with their related product and customer
-        return Order::with(['product', 'customer'])->get();
+        return Order::with(['product', 'user'])->get();
     }
 
     public function show(Order $order) {
-        // Return a single order with its related product and customer
-        return $order->load(['product', 'customer']);
+        return $order->load(['product', 'user']);
     }
 
     public function store(Request $req) {
-        $data = $req->validate([
-            'customer_id' => 'required|exists:customers,id',
-            'product_id' => 'required|exists:products,id',
-            'quantity' => 'required|integer|min:1',
-            'status' => 'required|string',
+        $req->validate([
+            'name' => 'required|string|max:255',
+            'address' => 'required|string|max:255',
+            'payment' => 'required|string|max:255',
+            'items' => 'required|array|min:1',
+            'items.*.product_id' => 'required|exists:products,id',
+            'items.*.quantity' => 'required|integer|min:1',
+            'items.*.status' => 'required|string',
         ]);
 
-        $product = Product::findOrFail($data['product_id']);
-        $data['total_price'] = $product->price * $data['quantity'];
+        $user = $req->user();
+        $orders = [];
 
-        $order = Order::create($data);
-        return $order->load(['product', 'customer']);
+        foreach ($req->items as $item) {
+            $product = Product::findOrFail($item['product_id']);
+            $total_price = $product->price * $item['quantity'];
+
+            $orders[] = Order::create([
+                'product_id'  => $item['product_id'],
+                'quantity'    => $item['quantity'],
+                'status'      => $item['status'],
+                'total_price' => $total_price,
+                'customer_id' => $user->id,
+                'name'        => $req->input('name'),
+                'address'     => $req->input('address'),
+                'payment'     => $req->input('payment'),
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Orders placed successfully',
+            'orders'  => $orders,
+        ], 201);
+    }
+
+    // ✅ Admin-only index
+    public function adminIndex() {
+        return Order::with(['product', 'user'])->orderByDesc('created_at')->get();
     }
 
     public function update(Request $req, Order $order) {
         $data = $req->validate([
             'quantity' => 'sometimes|integer|min:1',
-            'status' => 'sometimes|string',
+            'status'   => 'sometimes|string',
         ]);
 
         if (isset($data['quantity'])) {
@@ -44,7 +68,7 @@ class OrderController extends Controller
         }
 
         $order->update($data);
-        return $order->load(['product', 'customer']);
+        return $order->load(['product', 'user']);
     }
 
     public function destroy(Order $order) {

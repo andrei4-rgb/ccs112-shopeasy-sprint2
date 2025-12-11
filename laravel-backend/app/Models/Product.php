@@ -15,11 +15,12 @@ class Product extends Model
         'image',
         'description',
         'stock',
-        'category_id',
+        'category',   // ✅ string category field
     ];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
+   
+    // public function category()
+    // {
+    //     return $this->belongsTo(Category::class);
+    // }
 }

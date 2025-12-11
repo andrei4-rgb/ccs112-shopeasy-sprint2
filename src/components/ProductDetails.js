@@ -1,18 +1,28 @@
-// Austria, Sheban James, V
-
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import products from "../data/products.json";
-import "../index.css"; 
+import axios from "axios";
+import "../index.css";
 
 export default function ProductDetails() {
   const { id } = useParams();
   const nav = useNavigate();
-  const product = products.find((p) => String(p.id) === id);
+  const [product, setProduct] = useState(null);
+
+  useEffect(() => {
+    const loadProduct = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8082/api/products/${id}`);
+        setProduct(res.data);
+      } catch (err) {
+        console.error("Failed to fetch product:", err);
+      }
+    };
+    loadProduct();
+  }, [id]);
 
   if (!product) return <div style={{ padding: 16 }}>Product not found</div>;
 
-return (
+  return (
     <div className="page-container">
       <button
         onClick={() => nav(-1)}
@@ -48,7 +58,3 @@ return (
     </div>
   );
 }
-
-
-
-//updated

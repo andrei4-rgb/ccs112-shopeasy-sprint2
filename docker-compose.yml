@@ -1,28 +1,49 @@
-version: "3.9"
-
 services:
-  react-dev:
-    image: node:20-alpine
-    container_name: react-dev
-    working_dir: /app
-    volumes:
-      - .:/app
-      - node_modules:/app/node_modules
+  react-app:
+    build:
+      context: .                # React app is in project root
+      dockerfile: Dockerfile    # React Dockerfile in root
+    container_name: react-app
     ports:
-      - "3000:3000"
-    environment:
-      - CHOKIDAR_USEPOLLING=true
-      - WATCHPACK_POLLING=true
-      - FAST_REFRESH=true
-    command: sh -c "npm install && npm start"
-    stdin_open: true
-    tty: true
+      - "3000:8080"             # Map React build served by Nginx (8080 inside container → 3000 outside)
     restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:3000"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+
+  php-app:
+    build:
+      context: ./laravel-backend
+      dockerfile: Dockerfile    # Laravel Dockerfile inside laravel-backend
+    container_name: php-app
+    working_dir: /var/www/html
+    volumes:
+      - ./laravel-backend:/var/www/html
+    ports:
+      - "8082:8082"             # ✅ Fixed: map host 8082 → container 8082
+    depends_on:
+      - mysql-db
+
+  mysql-db:
+    image: mysql:8.0
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: shopeasydb
+      MYSQL_USER: shopeasy
+      MYSQL_PASSWORD: shopeasy123
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql-db
+      PMA_PORT: 3306
+    ports:
+      - "8081:80"
+    depends_on:
+      - mysql-db
 
 volumes:
-  node_modules:
+  db_data:

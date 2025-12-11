@@ -1,38 +1,49 @@
-// ABAD, JOHN ALREI
-
-import React, { useState } from "react"; 
-import { Link, useNavigate } from "react-router-dom"; 
+import React from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import "../index.css";
 
 export default function Navbar() {
-  const [dropdownOpen, setDropdownOpen] = useState(false); 
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { user, logout } = useAuth();
+
+  // Hide navbar on landing or login page
+  const hideNavbar =
+    location.pathname === "/" || location.pathname.startsWith("/login");
+  if (hideNavbar) return null;
 
   return (
     <nav>
       <div className="logo">ShopEasy</div>
       <div className="nav-links">
-        <Link to="/">Home</Link>
+        <Link to="/home">Home</Link>
         <Link to="/products">Products</Link>
         <Link to="/cart">Cart</Link>
 
-        {/* Three dots menu for mode switching */}
-        <div className="mode-switch">
-          <button onClick={() => setDropdownOpen(!dropdownOpen)}>⋮</button>
-          {dropdownOpen && (
-            <div className="mode-dropdown">
-              <div onClick={() => { navigate("/"); setDropdownOpen(false); }}>
-                User Mode
-              </div>
-              <div onClick={() => { navigate("/admin"); setDropdownOpen(false); }}>
-                Admin Mode
-              </div>
-            </div>
-          )}
-        </div>
+        {user && (
+          <>
+            <span style={{ marginRight: "1rem" }}>
+              {user.email} ({user.role})
+            </span>
+            <button
+              onClick={() => {
+                logout();
+                navigate("/"); // back to landing after logout
+              }}
+              style={{
+                backgroundColor: "red",
+                color: "white",
+                border: "none",
+                padding: "6px 12px",
+                borderRadius: "4px",
+              }}
+            >
+              Logout
+            </button>
+          </>
+        )}
       </div>
     </nav>
   );
 }
-
-//Added new on navbar connected to AdminPanel --Team Leader

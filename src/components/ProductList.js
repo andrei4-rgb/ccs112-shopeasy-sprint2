@@ -1,8 +1,6 @@
 // Austria, Sheban James
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import products from "../data/products.json"; // remove local data import
 import api from "../api/axios";
 import "../index.css";
 
@@ -15,6 +13,7 @@ export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState("");
 
+  // Escape key handler
   useEffect(() => {
     const handleEsc = (e) => {
       if (e.key === "Escape") {
@@ -26,22 +25,23 @@ export default function ProductList() {
     return () => window.removeEventListener("keydown", handleEsc);
   }, []);
 
+  // Load products from API
   useEffect(() => {
-    // Load from API
-    api.get("/products")
+    api
+      .get("/api/products")
       .then((res) => setProducts(res.data))
       .catch((err) =>
         setError(err.response?.data?.message || "Failed to load products")
       );
   }, []);
 
+  // Filter by category (case-insensitive)
   const filteredProducts =
     selectedCategory === "All"
       ? products
       : products.filter((p) => {
-          // Adjust if backend returns category as object
-          // e.g., p.category?.name === selectedCategory
-          return p.category === selectedCategory || p.category_name === selectedCategory;
+          const category = p.category || "";
+          return category.toLowerCase() === selectedCategory.toLowerCase();
         });
 
   return (
@@ -50,6 +50,7 @@ export default function ProductList() {
         Our Products
       </h2>
 
+      {/* Category selector */}
       <div className="category-selector">
         <button
           className="category-button"
@@ -57,7 +58,6 @@ export default function ProductList() {
         >
           Category: {selectedCategory}
         </button>
-
         {dropdownOpen && (
           <div className="category-dropdown">
             {categories.map((cat) => (
@@ -80,23 +80,49 @@ export default function ProductList() {
 
       {error && <p style={{ color: "red" }}>{error}</p>}
 
+      {/* Product grid */}
       <div className="product-grid">
         {filteredProducts.map((p) => (
           <div
             key={p.id}
-            className={`product-card ${expandedId === p.id ? "expanded" : ""}`}
+            className={`product-card ${
+              expandedId === p.id ? "expanded" : ""
+            }`}
             onClick={(e) => {
               e.stopPropagation();
               setExpandedId(expandedId === p.id ? null : p.id);
             }}
           >
-            {/* If backend doesn’t have image field, guard it */}
-            {p.image && <img src={p.image} alt={p.name} />}
+            {p.image && (
+              <img
+                src={p.image}
+                alt={p.name}
+                style={{
+                  width: "100%",
+                  height: expandedId === p.id ? "auto" : "200px",
+                  maxHeight: expandedId === p.id ? "80vh" : "200px",
+                  objectFit: expandedId === p.id ? "contain" : "cover",
+                  borderRadius: "8px",
+                  marginBottom: "8px",
+                }}
+              />
+            )}
             <h3>{p.name}</h3>
-            <p>₱{p.price}</p>
-            <Link to={`/products/${p.id}`}>
-              <button>View</button>
-            </Link>
+
+            {/* Price + View button aligned side by side */}
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                marginTop: "8px",
+              }}
+            >
+              <p style={{ margin: 0 }}>₱{p.price}</p>
+              <Link to={`/products/${p.id}`}>
+                <button>View</button>
+              </Link>
+            </div>
           </div>
         ))}
       </div>
@@ -106,4 +132,5 @@ export default function ProductList() {
       )}
     </div>
   );
+
 }

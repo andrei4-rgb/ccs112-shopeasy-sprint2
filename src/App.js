@@ -10,31 +10,65 @@ import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import AdminPanel from "./components/AdminPanel";
 import OrdersView from "./components/OrdersView";
-import Login from "./components/Login";   // <-- add unified login
+import Login from "./components/Login";
+import ProtectedRoute from "./components/ProtectedRoute";
+import AdminGuard from "./components/AdminGuard";
+import { AuthProvider } from "./context/AuthContext";
 import "./index.css";
+import Landing from "./components/Landing"; // <-- new import
 
 export default function App() {
   return (
-    <Router>
-      <div className="top-bar"></div>
+    <AuthProvider>
+      <Router>
+        <div className="top-bar"></div>
 
-      <Routes>
-        {/* User-facing layout */}
-        <Route element={<UserLayout />}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/products" element={<ProductList />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-        </Route>
+        <Routes>
+          {/* Landing page first */}
+          <Route path="/" element={<Landing />} />
 
-        {/* Login route for both users and admins */}
-        <Route path="/login" element={<Login />} />
+          {/* User-facing layout */}
+          <Route element={<UserLayout />}>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="/products" element={<ProductList />} />
+            <Route path="/products/:id" element={<ProductDetails />} />
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Route>
 
-        {/* Admin routes without Navbar */}
-        <Route path="/admin" element={<AdminPanel />} />
-        <Route path="/admin/orders" element={<OrdersView />} />
-      </Routes>
-    </Router>
+          {/* Login route for both users and admins */}
+          <Route path="/login" element={<Login />} />
+
+          {/* Protected user route */}
+          <Route
+            path="/account"
+            element={
+              <ProtectedRoute>
+                <div>Account page</div>
+              </ProtectedRoute>
+            }
+          />
+
+          {/* Admin-only routes */}
+          <Route
+            path="/admin"
+            element={
+              <AdminGuard>
+                <AdminPanel />
+              </AdminGuard>
+            }
+          />
+          <Route
+            path="/admin/orders"
+            element={
+              <AdminGuard>
+                <OrdersView />
+              </AdminGuard>
+            }
+          />
+        </Routes>
+      </Router>
+    </AuthProvider>
   );
 }
+
